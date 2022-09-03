@@ -10,6 +10,7 @@ using namespace std;
 
 typedef long long ll;
 typedef long double ld;
+typedef unsigned long long ull;
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef vector<ll> vll;
@@ -46,6 +47,34 @@ ll factorial(ll n)
         --i;
     }
     return fact;
+}
+
+/*-----------------COMBINATION----------------*/
+ull nCr(int n, int r)
+{
+    if (r > n)
+        return 0;
+    r = max(r, n - r); // nCr(n,r) = nCr(n,n-r)
+    ull ans(1), div(1), i(r + 1);
+    while (i <= n)
+    {
+        ans *= i;
+        ++i;
+        ans /= div;
+        ++div;
+    }
+    return ans;
+}
+
+/*-----------------PERMUTATION----------------*/
+ull nPr(int n, int r)
+{
+    if (r > n)
+        return 0;
+    ull p(1), i(n - r + 1);
+    while (i <= n)
+        p *= i++;
+    return p;
 }
 
 /*-----------------GCD----------------*/
