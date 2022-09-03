@@ -91,15 +91,17 @@ ll lcm(ll A, ll B)
     return (A * B) / (gcd(A, B));
 }
 
-/*-----------------Fast Power----------------*/
-ll mul(ll a, ll b, ll m)
+/*-----------------MODUL MULTIPLICATION----------------*/
+ll mul(ll a, ll b, ll c)
 {
-    return ((a % m) * (b % m)) % m;
+    // (a * b) % c;
+    return ((a % c) * (b % c)) % c;
 }
 
+/*-----------------Fast Power----------------*/
 ll fast_power(ll base, ll power) // There ara some errors
 {
-    ll result = 1;
+    ll result(1);
     while (power > 0)
     {
         if (power % 2 == 1)
@@ -108,6 +110,21 @@ ll fast_power(ll base, ll power) // There ara some errors
         power >>= 1;
     }
     return result;
+}
+
+/*-----------------FACTORIZATION----------------*/
+void factorization(ll n)
+{
+    for (int i = 1; i * i <= n; ++i)
+    {
+        if (n % i == 0)
+        {
+            cout << i << " ";
+            if (i * i != n)
+                cout << n / i;
+            cout << endl;
+        }
+    }
 }
 
 int main()
