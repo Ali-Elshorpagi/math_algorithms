@@ -34,6 +34,20 @@ ll clac_sum(ll a1, ll an, ll n)
     return (((a1 + an) * n) >> 1);
 }
 
+/*-----------------FACTORIAL----------------*/
+ll factorial(ll n)
+{
+    if (n == 0)
+        return 1;
+    ll i(n), fact(1);
+    while ((n / i) != n)
+    {
+        fact *= i;
+        --i;
+    }
+    return fact;
+}
+
 /*-----------------GCD----------------*/
 ll gcd(ll A, ll B)
 {
