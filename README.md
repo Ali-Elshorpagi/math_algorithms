@@ -1,2 +1,3 @@
-# math_function
-Some Math Functions 
+# Basics Math Algorithms
+
+
