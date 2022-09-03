@@ -49,14 +49,19 @@ ll lcm(ll A, ll B)
 }
 
 /*-----------------Fast Power----------------*/
+ll mul(ll a, ll b, ll m)
+{
+    return ((a % m) * (b % m)) % m;
+}
+
 ll fast_power(ll base, ll power) // There ara some errors
 {
     ll result = 1;
     while (power > 0)
     {
         if (power % 2 == 1)
-            result = (result * base) % MOD;
-        base = (base * base) % MOD;
+            result = mul(result, base, MOD);
+        base = mul(base, base, MOD);
         power >>= 1;
     }
     return result;
