@@ -127,6 +127,21 @@ void factorization(ll n)
     }
 }
 
+/*-----------------PRIME FACTORIZATION----------------*/
+void prime_factorization(ll n)
+{
+    vi p_factors;
+    for (ll i = 2; i * i <= n; i++)
+    {
+        while (n % i == 0)
+            n /= i, p_factors.emplace_back(i);
+    }
+    if (n != 1)
+        p_factors.emplace_back(n);
+
+    fc(p_factors) cout << it << " ";
+}
+
 int main()
 {
     fast;
