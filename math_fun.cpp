@@ -88,7 +88,7 @@ ll gcd(ll A, ll B)
 /*-----------------LCM----------------*/
 ll lcm(ll A, ll B)
 {
-    return (A * B) / (gcd(A, B));
+    return A / gcd(A, B) * B;
 }
 
 /*-----------------MODUL MULTIPLICATION----------------*/
