@@ -88,9 +88,10 @@ ll lcm(ll A, ll B)
     return A / gcd(A, B) * B;
 }
 
-/*-----------------MODUL MULTIPLICATION----------------*/
+/*-----------------MODULUS MULTIPLICATION----------------*/
 ll mul(ll a, ll b, ll c)
 {
+    // note : a % b = a - (b * floor(a / b));
     // (a * b) % c;
     return ((a % c) * (b % c)) % c;
 }
