@@ -5,6 +5,8 @@
 #include <iomanip>
 #include <vector>
 #include <set>
+#include <map>
+#include <utility>
 
 using namespace std;
 
@@ -23,6 +25,7 @@ typedef vector<char> vc;
 #define edl '\n'
 #define clr(v, d) memset(v, d, sizeof(v))
 #define fr(i, x, n) for (ll i = x; i < n; ++i)
+#define fl(i, x, n) for (ll i = x; i >= n; --i)
 #define fc(v) for (auto &it : (v))
 #define MOD 1000000007
 
@@ -38,15 +41,9 @@ ll clac_sum(ll a1, ll an, ll n)
 /*-----------------FACTORIAL----------------*/
 ll factorial(ll n)
 {
-    if (n == 0)
+    if (n == 0 || n == 1)
         return 1;
-    ll i(n), fact(1);
-    while ((n / i) != n)
-    {
-        fact *= i;
-        --i;
-    }
-    return fact;
+    return n * factorial(n - 1);
 }
 
 /*-----------------COMBINATION----------------*/
