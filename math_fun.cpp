@@ -91,7 +91,7 @@ ll lcm(ll A, ll B)
 /*-----------------MODULUS MULTIPLICATION----------------*/
 ll mul(ll a, ll b, ll c)
 {
-    // note : a % b = a - (b * floor(a / b));
+    // Note : a % b = a - (b * floor(a / b));
     // (a * b) % c;
     return ((a % c) * (b % c)) % c;
 }
@@ -99,6 +99,7 @@ ll mul(ll a, ll b, ll c)
 /*-----------------Fast Power----------------*/
 ll fast_power(ll base, ll power) // There ara some errors
 {
+    // You can change MOD to any variable that you want and add it to the function parameters;
     ll result(1);
     while (power > 0)
     {
