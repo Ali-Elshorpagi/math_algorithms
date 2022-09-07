@@ -82,6 +82,23 @@ ll gcd(ll A, ll B)
     return gcd(B, A % B);
 }
 
+/*-----------------Extended Euclidean Recursive----------------*/
+ll extended_euclidean_recursive(ll a, ll b, ll &x, ll &y)
+{
+    // a*x + b*y = gcd(a, b);
+    // This algorithm return x, y and gcd(a, b);
+    if (b == 0)
+    {
+        x = 1, y = 0;
+        return a;
+    }
+    ll x1, y1;
+    ll g = extended_euclidean_recursive(a, a % b, x1, y1);
+    x = y1;
+    y = x1 - y1 * (a / b);
+    return g; // g = gcd(a, b)
+}
+
 /*-----------------LCM----------------*/
 ll lcm(ll A, ll B)
 {
