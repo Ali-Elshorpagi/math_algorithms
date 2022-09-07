@@ -95,8 +95,8 @@ ll extended_euclidean_recursive(ll a, ll b, ll &x, ll &y)
     ll x1, y1;
     ll g = extended_euclidean_recursive(a, a % b, x1, y1);
     x = y1;
-    y = x1 - y1 * (a / b);
-    return g; // g = gcd(a, b)
+    y = x1 - y1 * (a / b); // a % b = a - (b * (floor(a / b)));
+    return g;              // g = gcd(a, b);
 }
 
 /*-----------------LCM----------------*/
@@ -108,7 +108,6 @@ ll lcm(ll A, ll B)
 /*-----------------MODULUS MULTIPLICATION----------------*/
 ll mul(ll a, ll b, ll c)
 {
-    // Note : a % b = a - (b * floor(a / b));
     // (a * b) % c;
     return ((a % c) * (b % c)) % c;
 }
