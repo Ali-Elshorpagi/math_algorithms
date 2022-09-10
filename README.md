@@ -1,3 +1,3 @@
-# Basics Math Algorithms
+# Math Algorithms
 
 
