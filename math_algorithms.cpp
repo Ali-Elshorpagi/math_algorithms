@@ -82,10 +82,27 @@ ll gcd(ll A, ll B)
     return gcd(B, A % B);
 }
 
-/*-----------------Extended Euclidean Recursive----------------*/
+/*-----------------EXTENDED EUCLIDEAN ITERATIVE----------------*/
+ll extended_euclidean_iterative(ll a, ll b, ll &x_prev, ll &y_prev)
+{
+    // a*x + b*y = gcd(a, b); // Bézout's Theorem
+    // This algorithm return x, y and gcd(a, b);
+    x_prev = 1, y_prev = 0;
+    ll x(0), y(1);
+    while (b)
+    {
+        ll q(a / b);
+        tie(x, x_prev) = make_tuple(x_prev - q * x, x);
+        tie(y, y_prev) = make_tuple(y_prev - q * y, y);
+        tie(a, b) = make_tuple(b, a % b);
+    }
+    return a; // a = gcd(a, b);
+}
+
+/*-----------------EXTENDED EUCLIDEAN RECURSIVE----------------*/
 ll extended_euclidean_recursive(ll a, ll b, ll &x, ll &y)
 {
-    // a*x + b*y = gcd(a, b);
+    // a*x + b*y = gcd(a, b); // Bézout's Theorem
     // This algorithm return x, y and gcd(a, b);
     if (b == 0)
     {
@@ -112,16 +129,16 @@ ll mul(ll a, ll b, ll c)
     return ((a % c) * (b % c)) % c;
 }
 
-/*-----------------Fast Power----------------*/
-ll fast_power(ll base, ll power) // There ara some errors
+/*-----------------MODULUR EXPONENTIATION----------------*/
+ll modular_exponentiation(ll base, ll power, ll m = MOD) // Fast Power
 {
     // You can change MOD to any variable that you want and add it to the function parameters;
     ll result(1);
     while (power > 0)
     {
         if (power % 2 == 1)
-            result = mul(result, base, MOD);
-        base = mul(base, base, MOD);
+            result = mul(result, base, m);
+        base = mul(base, base, m);
         power >>= 1;
     }
     return result;
