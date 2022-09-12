@@ -166,7 +166,7 @@ void factorization(ll n)
             cout << i << " ";
             if (i * i != n)
                 cout << n / i;
-            cout << endl;
+            cout << edl;
         }
     }
 }
