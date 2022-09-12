@@ -23,7 +23,6 @@ typedef vector<char> vc;
 #define sz(v) ((int)((v).size()))
 #define cl(v) ((v).clear())
 #define edl '\n'
-#define clr(v, d) memset(v, d, sizeof(v))
 #define fr(i, x, n) for (ll i = x; i < n; ++i)
 #define fl(i, x, n) for (ll i = x; i >= n; --i)
 #define fc(v) for (auto &it : (v))
@@ -47,7 +46,7 @@ ll factorial(ll n)
 }
 
 /*-----------------COMBINATION----------------*/
-ull nCr(int n, int r)
+ull nCr(ll n, ll r)
 {
     if (r > n)
         return 0;
@@ -64,7 +63,7 @@ ull nCr(int n, int r)
 }
 
 /*-----------------PERMUTATION----------------*/
-ull nPr(int n, int r)
+ull nPr(ll n, ll r)
 {
     if (r > n)
         return 0;
@@ -130,7 +129,7 @@ ll mul(ll a, ll b, ll c)
 }
 
 /*-----------------MODULUR EXPONENTIATION----------------*/
-ll modular_exponentiation(ll base, ll power, ll m = MOD) // Fast Power
+ll modular_exponentiation(ll base, ll power, ll m = MOD)
 {
     // You can change MOD to any variable that you want and add it to the function parameters;
     ll result(1);
@@ -143,11 +142,24 @@ ll modular_exponentiation(ll base, ll power, ll m = MOD) // Fast Power
     }
     return result;
 }
+/*-----------------FAST POWER----------------*/
+ll fast_power(ll b, ll p)
+{
+    ll ans(1);
+    while (p)
+    {
+        if (p % 2)
+            ans = (ans * b);
+        b *= b;
+        p >>= 1;
+    }
+    return ans;
+}
 
 /*-----------------FACTORIZATION----------------*/
 void factorization(ll n)
 {
-    for (int i = 1; i * i <= n; ++i)
+    for (ll i = 1; i * i <= n; ++i)
     {
         if (n % i == 0)
         {
@@ -170,7 +182,6 @@ void prime_factorization(ll n)
     }
     if (n != 1)
         p_factors.emplace_back(n);
-
     fc(p_factors) cout << it << " ";
 }
 
