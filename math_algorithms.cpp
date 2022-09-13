@@ -140,6 +140,7 @@ ll modular_exponentiation(ll base, ll power, ll m = MOD)
     }
     return result;
 }
+
 /*-----------------FAST POWER----------------*/
 ll fast_power(ll b, ll p)
 {
@@ -153,6 +154,19 @@ ll fast_power(ll b, ll p)
     }
     return ans;
 }
+
+/*-----------------REPOWER----------------*/
+ll re_pow(ll b, ll p)
+{
+    if (p == 0)
+        return 1;
+    ll sq(re_pow(b, p / 2));
+    sq *= sq;
+    if (p % 2 == 1)
+        sq *= b;
+    return sq;
+}
+
 
 /*-----------------FACTORIZATION----------------*/
 void factorization(ll n)
