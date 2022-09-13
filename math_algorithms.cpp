@@ -160,13 +160,12 @@ ll re_pow(ll b, ll p)
 {
     if (p == 0)
         return 1;
-    ll sq(re_pow(b, p / 2));
+    ll sq(re_pow(b, p >> 1));
     sq *= sq;
     if (p % 2 == 1)
         sq *= b;
     return sq;
 }
-
 
 /*-----------------FACTORIZATION----------------*/
 void factorization(ll n)
