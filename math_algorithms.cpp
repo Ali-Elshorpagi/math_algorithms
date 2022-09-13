@@ -133,26 +133,26 @@ ll modular_exponentiation(ll base, ll power, ll m = MOD)
     return result;
 }
 
-/*-----------------FAST POWER----------------*/
-ll fast_power(ll b, ll p)
+/*-----------------FAST POWER ITERATIVE----------------*/
+ll fast_power_iterative(ll b, ll p)
 {
     ll ans(1);
     while (p)
     {
         if (p % 2)
-            ans = (ans * b);
+            ans *= b;
         b *= b;
         p >>= 1;
     }
     return ans;
 }
 
-/*-----------------REPOWER----------------*/
-ll re_pow(ll b, ll p)
+/*-----------------FAST POWER RECURSIVE----------------*/
+ll fast_power_recursive(ll b, ll p)
 {
     if (p == 0)
         return 1;
-    ll sq(re_pow(b, p >> 1));
+    ll sq(fast_power_recursive(b, p >> 1));
     sq *= sq;
     if (p % 2 == 1)
         sq *= b;
