@@ -23,8 +23,8 @@ typedef vector<char> vc;
 #define sz(v) ((int)((v).size()))
 #define cl(v) ((v).clear())
 #define edl '\n'
-#define fr(i, x, n) for (ll i = x; i < n; ++i)
-#define fl(i, x, n) for (ll i = x; i >= n; --i)
+#define fr(i, x, n) for (ll i(x); i < n; ++i)
+#define fl(i, x, n) for (ll i(x); i >= n; --i)
 #define fc(v) for (auto &it : (v))
 #define MOD 1000000007
 
@@ -54,10 +54,8 @@ ull nCr(ll n, ll r)
     ull ans(1), div(1), i(r + 1);
     while (i <= n)
     {
-        ans *= i;
-        ++i;
-        ans /= div;
-        ++div;
+        ans *= i, ++i;
+        ans /= div, ++div;
     }
     return ans;
 }
@@ -159,7 +157,7 @@ ll fast_power(ll b, ll p)
 /*-----------------FACTORIZATION----------------*/
 void factorization(ll n)
 {
-    for (ll i = 1; i * i <= n; ++i)
+    for (ll i(1); i * i <= n; ++i)
     {
         if (n % i == 0)
         {
@@ -175,7 +173,7 @@ void factorization(ll n)
 void prime_factorization(ll n)
 {
     vi p_factors;
-    for (ll i = 2; i * i <= n; i++)
+    for (ll i(2); i * i <= n; i++)
     {
         while (n % i == 0)
             n /= i, p_factors.emplace_back(i);
@@ -183,6 +181,19 @@ void prime_factorization(ll n)
     if (n != 1)
         p_factors.emplace_back(n);
     fc(p_factors) cout << it << " ";
+}
+
+/*-----------------PRIME CHECKING----------------*/
+bool is_prime(ll n)
+{
+    if (n <= 1)
+        return false;
+    for (ll i(2); i * i <= n; ++i)
+    {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
 }
 
 int main()
