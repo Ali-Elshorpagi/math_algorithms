@@ -6,9 +6,7 @@ typedef long long ll;
 typedef long double ld;
 typedef unsigned long long ull;
 typedef vector<int> vi;
-typedef vector<vi> vvi;
 typedef vector<ll> vll;
-typedef vector<char> vc;
 
 #define fast (ios_base::sync_with_stdio(false), cin.tie(NULL))
 #define all(v) ((v).begin()), ((v).end())
@@ -188,6 +186,16 @@ void prime_factorization(ll n)
     fc(p_factors) cout << it << " ";
 }
 
+/*-----------------CHECK PERFECT SQUARE----------------*/
+bool perfect_square(ll n)
+{
+    double sqrt_n(sqrt(n));
+    if (sqrt_n == int(sqrt_n))
+        return true;
+    else
+        return false;
+}
+
 /*-----------------PRIME CHECKING----------------*/
 bool is_prime(ll n)
 {
@@ -199,6 +207,42 @@ bool is_prime(ll n)
             return false;
     }
     return true;
+}
+
+/*-----------------SIEVE OF ERATOSTHENES----------------*/
+const ll sze = 1e6 + 10;
+void sieve()
+{
+    bool composite[sze + 1];
+    vll prime(sze);
+    composite[0] = composite[1] = 1;
+    for (ll i(2); i * i <= sze; ++i)
+    {
+        if (!composite[i])
+        {
+            for (ll j(i * i); j <= sze; j += i)
+                composite[j] = 1;
+        }
+    }
+}
+
+/*-----------------LINEAR SIEVE OF ERATOSTHENES----------------*/
+void linear_sieve()
+{
+    bool composite[sze + 1];
+    vll prime(sze);
+    composite[0] = composite[1] = 1;
+    fr(i, 2, sze + 1)
+    {
+        if (!composite[i])
+            prime.push_back(i);
+        for (ll j(0); j < sz(prime) && i * prime[j] <= sze; ++j)
+        {
+            composite[i * prime[j]] = 1;
+            if (i % prime[j] == 0)
+                break;
+        }
+    }
 }
 
 int main()
