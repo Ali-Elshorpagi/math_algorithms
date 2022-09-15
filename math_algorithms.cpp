@@ -115,10 +115,24 @@ ll lcm(ll A, ll B)
 }
 
 /*-----------------MODULUS MULTIPLICATION----------------*/
-ll mul(ll a, ll b, ll c)
+ll multiplication_mod(ll a, ll b, ll c)
 {
     // (a * b) % c;
     return ((a % c) * (b % c)) % c;
+}
+
+/*-----------------MODULUS MULTIPLICATION BY ADDITION----------------*/
+ll multiplication_mod_by_addition(ll a, ll b, ll m)
+{
+    // this func convert the multiplication operation to addition operation;
+    ll res(0), y(a % m);
+    while (b > 0)
+    {
+        if (b % 2 == 1)
+            res = (res + y) % m;
+        b >>= 1, y <<= 1, y %= m;
+    }
+    return res % m;
 }
 
 /*-----------------MODULUR EXPONENTIATION----------------*/
@@ -129,11 +143,39 @@ ll modular_exponentiation(ll base, ll power, ll m = MOD)
     while (power > 0)
     {
         if (power % 2 == 1)
-            result = mul(result, base, m);
-        base = mul(base, base, m);
+            result = multiplication_mod_by_addition(result, base, m); // you can use multiplication_mod function;
+        base = multiplication_mod_by_addition(base, base, m);         // but this is faster;
         power >>= 1;
     }
     return result;
+}
+
+/*-----------------PRIME CHECKING 0----------------*/
+bool is_prime_0(ll n, ll k = 500) // Fermat Primality algorithm
+{
+    if (n <= 4)
+        return n == 2 || n == 3;
+    fr(i, 1, k + 1)
+    {
+        ll a(2 + rand() % (n - 3));
+        ll res(modular_exponentiation(a, n - 1, n));
+        if (res != 1)
+            return false;
+    }
+    return true;
+}
+
+/*-----------------PRIME CHECKING 1----------------*/
+bool is_prime_1(ll n)
+{
+    if (n <= 1)
+        return false;
+    for (ll i(2); i * i <= n; ++i)
+    {
+        if (n % i == 0)
+            return false;
+    }
+    return true;
 }
 
 /*-----------------FAST POWER ITERATIVE----------------*/
@@ -199,19 +241,6 @@ bool perfect_square(ll n)
         return true;
     else
         return false;
-}
-
-/*-----------------PRIME CHECKING----------------*/
-bool is_prime(ll n)
-{
-    if (n <= 1)
-        return false;
-    for (ll i(2); i * i <= n; ++i)
-    {
-        if (n % i == 0)
-            return false;
-    }
-    return true;
 }
 
 /*-----------------SIEVE OF ERATOSTHENES----------------*/
