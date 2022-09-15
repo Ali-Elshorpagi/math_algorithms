@@ -79,6 +79,12 @@ ll gcd(ll A, ll B)
     return B == 0 ? A : gcd(B, A % B);
 }
 
+/*-----------------LCM----------------*/
+ll lcm(ll A, ll B)
+{
+    return A / gcd(A, B) * B;
+}
+
 /*-----------------EXTENDED EUCLIDEAN ITERATIVE----------------*/
 ll extended_euclidean_iterative(ll a, ll b, ll &x_prev, ll &y_prev)
 {
@@ -111,12 +117,6 @@ ll extended_euclidean_recursive(ll a, ll b, ll &x, ll &y)
     x = y1;
     y = x1 - y1 * (a / b); // a % b = a - (b * (floor(a / b)));
     return g;              // g = gcd(a, b);
-}
-
-/*-----------------LCM----------------*/
-ll lcm(ll A, ll B)
-{
-    return A / gcd(A, B) * B;
 }
 
 /*-----------------FAST POWER ITERATIVE----------------*/
