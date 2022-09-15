@@ -114,6 +114,32 @@ ll lcm(ll A, ll B)
     return A / gcd(A, B) * B;
 }
 
+/*-----------------FAST POWER ITERATIVE----------------*/
+ll fast_power_iterative(ll b, ll p)
+{
+    ll ans(1);
+    while (p)
+    {
+        if (p % 2)
+            ans *= b;
+        b *= b;
+        p >>= 1;
+    }
+    return ans;
+}
+
+/*-----------------FAST POWER RECURSIVE----------------*/
+ll fast_power_recursive(ll b, ll p)
+{
+    if (p == 0)
+        return 1;
+    ll sq(fast_power_recursive(b, p >> 1));
+    sq *= sq;
+    if (p % 2 == 1)
+        sq *= b;
+    return sq;
+}
+
 /*-----------------MODULUS MULTIPLICATION----------------*/
 ll multiplication_mod(ll a, ll b, ll c)
 {
@@ -176,32 +202,6 @@ bool is_prime_1(ll n)
             return false;
     }
     return true;
-}
-
-/*-----------------FAST POWER ITERATIVE----------------*/
-ll fast_power_iterative(ll b, ll p)
-{
-    ll ans(1);
-    while (p)
-    {
-        if (p % 2)
-            ans *= b;
-        b *= b;
-        p >>= 1;
-    }
-    return ans;
-}
-
-/*-----------------FAST POWER RECURSIVE----------------*/
-ll fast_power_recursive(ll b, ll p)
-{
-    if (p == 0)
-        return 1;
-    ll sq(fast_power_recursive(b, p >> 1));
-    sq *= sq;
-    if (p % 2 == 1)
-        sq *= b;
-    return sq;
 }
 
 /*-----------------FACTORIZATION----------------*/
