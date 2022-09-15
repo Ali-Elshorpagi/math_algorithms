@@ -19,9 +19,16 @@ typedef vector<bool> vb;
 #define fc(v) for (auto &it : (v))
 #define MOD 1000000007
 
-/*-----------------MATH FUNCTIONS----------------*/
+/*-----------------MATH TIPS----------------*/
 // ceil(a / b) a, b must be double;
 // ceil(a / b) a, b are integers = ((a + b - 1) / b);
+
+// a % b = a - (b * (floor(a / b)));
+
+// (a + b) % c = ((a % c) + (b % c)) % c;
+// (a * b) % c = ((a % c) * (b % c)) % c;
+// (a - b) % c = ((a % c) - (b % c) + c) % c;
+// (a / b) % c = ((a % c) * ((b ^ -1) % c)) % c;
 
 /*-----------------SUM----------------*/
 ll clac_sum(ll a1, ll an, ll n)
