@@ -7,6 +7,7 @@ typedef long double ld;
 typedef unsigned long long ull;
 typedef vector<int> vi;
 typedef vector<ll> vll;
+typedef vector<bool> vb;
 
 #define fast (ios_base::sync_with_stdio(false), cin.tie(NULL))
 #define all(v) ((v).begin()), ((v).end())
@@ -17,6 +18,10 @@ typedef vector<ll> vll;
 #define fl(i, x, n) for (ll i(x); i >= n; --i)
 #define fc(v) for (auto &it : (v))
 #define MOD 1000000007
+
+/*-----------------MATH FUNCTIONS----------------*/
+// ceil(a / b) a, b must be double;
+// ceil(a / b) a, b are integers = ((a + b - 1) / b);
 
 /*-----------------SUM----------------*/
 ll clac_sum(ll a1, ll an, ll n)
@@ -243,6 +248,44 @@ void linear_sieve()
                 break;
         }
     }
+}
+
+/*-----------------SEGMENTED SIEVE----------------*/
+vb segmented_sieve(ll L, ll R)
+{
+    ll lim(sqrt(R));
+    vb mark(lim + 1, false);
+    vll primes;
+    fr(i, 2, lim + 1)
+    {
+        if (!mark[i])
+        {
+            primes.emplace_back(i);
+            for (ll j(i * i); j <= lim; j += i)
+                mark[j] = true;
+        }
+    }
+    vb is_composite(R - L + 1, false);
+    fc(primes)
+    {
+        for (ll i(max(it * it, (L + it - 1) / it * it)); i <= R; i += it)
+            is_composite[i - L] = true;
+    }
+    if (L == 1)
+        is_composite[0] = true;
+    return is_composite;
+}
+
+/*-----------------PRINT SEGMENTED SIEVE----------------*/
+void print_segmented_sieve(ll L, ll R)
+{
+    vb is_composite_print = segmented_sieve(L, R);
+    fr(i, L, R + 1)
+    {
+        if (!is_composite_print[i - L])
+            cout << i << edl;
+    }
+    cout << edl;
 }
 
 int main()
