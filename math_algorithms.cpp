@@ -76,6 +76,8 @@ ull nPr(ll n, ll r)
 /*-----------------GCD----------------*/
 ll gcd(ll A, ll B)
 {
+    if (A < B)
+        return gcd(B, A);
     if (B == 0)
         return A;
     return gcd(B, A % B);
