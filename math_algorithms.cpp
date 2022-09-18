@@ -4,10 +4,16 @@ using namespace std;
 
 typedef long long ll;
 typedef long double ld;
-typedef unsigned long long ull;
+typedef unsigned long double ull;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
 typedef vector<int> vi;
-typedef vector<ll> vll;
 typedef vector<bool> vb;
+typedef vector<vi> vvi;
+typedef vector<ll> vll;
+typedef vector<vll> vvll;
+typedef vector<pii> vpii;
+typedef set<int> si;
 
 #define fast (ios_base::sync_with_stdio(false), cin.tie(NULL))
 #define all(v) ((v).begin()), ((v).end())
