@@ -22,7 +22,7 @@ typedef set<int> si;
 #define edl '\n'
 #define fr(i, x, n) for (ll i(x); i < n; ++i)
 #define fl(i, x, n) for (ll i(x); i >= n; --i)
-#define fc(v) for (auto &it : (v))
+#define fc(it, v) for (auto &(it) : (v))
 #define MOD 1000000007
 
 /*-----------------MATH TIPS----------------*/
@@ -241,7 +241,7 @@ void prime_factorization(ll n)
     }
     if (n != 1)
         p_factors.emplace_back(n);
-    fc(p_factors) cout << it << " ";
+    fc(it, p_factors) cout << it << " ";
 }
 
 /*-----------------CHECK PERFECT SQUARE----------------*/
@@ -306,7 +306,7 @@ vb segmented_sieve(ll L, ll R)
         }
     }
     vb is_composite(R - L + 1, false);
-    fc(primes)
+    fc(it, primes)
     {
         for (ll i(max(it * it, (L + it - 1) / it * it)); i <= R; i += it)
             is_composite[i - L] = true;
