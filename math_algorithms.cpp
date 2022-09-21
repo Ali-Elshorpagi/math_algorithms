@@ -48,9 +48,7 @@ ll clac_sum(ll a1, ll an, ll n)
 /*-----------------FACTORIAL----------------*/
 ll factorial(ll n)
 {
-    if (n == 0 || n == 1)
-        return 1;
-    return n * factorial(n - 1);
+    return ((n == 0 || n == 1) ? 1 : (n * factorial(n - 1)));
 }
 
 /*-----------------COMBINATION----------------*/
@@ -82,7 +80,7 @@ ull nPr(ll n, ll r)
 /*-----------------GCD----------------*/
 ll gcd(ll A, ll B)
 {
-    return B == 0 ? A : gcd(B, A % B);
+    return (B == 0 ? A : gcd(B, A % B));
 }
 
 /*-----------------LCM----------------*/
