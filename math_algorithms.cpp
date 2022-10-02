@@ -15,7 +15,7 @@ typedef vector<vll> vvll;
 typedef vector<pii> vpii;
 typedef set<int> si;
 
-#define fast (ios_base::sync_with_stdio(false), cin.tie(NULL))
+#define Mesh_Ali (ios_base::sync_with_stdio(false), cin.tie(NULL))
 #define all(v) ((v).begin()), ((v).end())
 #define sz(v) ((int)((v).size()))
 #define cl(v) ((v).clear())
@@ -253,7 +253,7 @@ bool perfect_square(ll n)
 }
 
 /*-----------------SIEVE OF ERATOSTHENES----------------*/
-const ll sze = 1e6 + 10;
+const ll sze(1e6 + 10);
 void sieve()
 {
     bool composite[sze + 1];
@@ -328,7 +328,7 @@ void print_segmented_sieve(ll L, ll R)
 
 int main()
 {
-    fast;
+    Mesh_Ali;
 
     return 0;
 }
