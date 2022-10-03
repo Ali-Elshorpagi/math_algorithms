@@ -45,6 +45,42 @@ ll clac_sum(ll a1, ll an, ll n)
     return (((a1 + an) * n) >> 1);
 }
 
+/*-----------------CUMULATIVE SUM----------------*/
+void cumulative_sum()
+{
+    ll n;
+    cin >> n;
+    vll arr(n);
+    fc(it, arr) cin >> it;
+    fr(i, 1, n) arr[i] += arr[i - 1];
+    ll q, l, r;
+    cin >> q;
+    while (q--)
+    {
+        cin >> l >> r;
+        --l, --r;
+        cout << (l != 0 ? arr[r] - arr[l - 1] : arr[r]) << edl;
+    }
+}
+
+/*-----------------RANGED SUM----------------*/
+void ranged_sum()
+{
+    // value can be any number based on the problem;
+    ll n, t;
+    cin >> n >> t;
+    vll arr(n + 10); // given array of zeros of size n;
+    ll value(1), l, r;
+    while (t--)
+    {
+        cin >> l >> r;
+        arr[l] += value;
+        arr[r + 1] -= value;
+    }
+    fr(i, 1, n + 1) arr[i] += arr[i - 1];
+    fr(i, 1, n + 1) cout << arr[i] << " ";
+}
+
 /*-----------------FACTORIAL----------------*/
 ll factorial(ll n)
 {
