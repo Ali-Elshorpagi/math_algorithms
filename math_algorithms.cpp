@@ -90,6 +90,7 @@ ll factorial(ll n)
 /*-----------------COMBINATION----------------*/
 ull nCr(ll n, ll r)
 {
+    // we can use -> nCr = factorial(n) / (factorial(r) * factorial(n - r));
     if (r > n)
         return 0;
     r = max(r, n - r); // nCr(n,r) = nCr(n,n-r)
@@ -105,6 +106,7 @@ ull nCr(ll n, ll r)
 /*-----------------PERMUTATION----------------*/
 ull nPr(ll n, ll r)
 {
+    // we can use -> nPr = factorial(n) / factorial(n - r);
     if (r > n)
         return 0;
     ull p(1), i(n - r + 1);
