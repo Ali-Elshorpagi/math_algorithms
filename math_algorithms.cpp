@@ -36,7 +36,7 @@ typedef set<int> si;
 // (a - b) % c = ((a % c) - (b % c) + c) % c;
 // (a / b) % c = ((a % c) * ((b ^ -1) % c)) % c;
 
-/*-----------------SUM----------------*/
+/*-----------------SUMMATION FROM 1 TO N----------------*/
 ll clac_sum(ll a1, ll an, ll n)
 {
     // sum all odd from 1 to n = ((n + 1) / 2) * ((n + 1) / 2);
