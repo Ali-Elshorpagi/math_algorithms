@@ -149,7 +149,7 @@ ll extended_euclidean_recursive(ll a, ll b, ll &x, ll &y)
 {
     // a*x + b*y = gcd(a, b); // Bézout's Theorem
     // This algorithm return x, y and gcd(a, b);
-    if (b == 0)
+    if (!b)
     {
         x = 1, y = 0;
         return a;
@@ -167,7 +167,7 @@ ll fast_power_iterative(ll b, ll p)
     ll ans(1);
     while (p)
     {
-        if (p % 2)
+        if (p & 1)
             ans *= b;
         b *= b;
         p >>= 1;
@@ -178,11 +178,11 @@ ll fast_power_iterative(ll b, ll p)
 /*-----------------FAST POWER RECURSIVE----------------*/
 ll fast_power_recursive(ll b, ll p)
 {
-    if (p == 0)
+    if (!p)
         return 1;
     ll sq(fast_power_recursive(b, p >> 1));
     sq *= sq;
-    if (p % 2 == 1)
+    if (p & 1)
         sq *= b;
     return sq;
 }
@@ -199,9 +199,9 @@ ll multiplication_mod_by_addition(ll a, ll b, ll m)
 {
     // this func convert the multiplication operation to addition operation;
     ll res(0), y(a % m);
-    while (b > 0)
+    while (b)
     {
-        if (b % 2 == 1)
+        if (b & 1)
             res = (res + y) % m;
         b >>= 1, y <<= 1, y %= m;
     }
@@ -213,9 +213,9 @@ ll modular_exponentiation(ll base, ll power, ll m = MOD)
 {
     // You can change MOD to any variable that you want and add it to the function parameters;
     ll result(1);
-    while (power > 0)
+    while (power)
     {
-        if (power % 2 == 1)
+        if (power & 1)
             result = multiplication_mod_by_addition(result, base, m); // you can use multiplication_mod function;
         base = multiplication_mod_by_addition(base, base, m);         // but this is faster;
         power >>= 1;
