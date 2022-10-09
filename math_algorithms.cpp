@@ -115,16 +115,30 @@ ull nPr(ll n, ll r)
     return p;
 }
 
-/*-----------------GCD----------------*/
-ll gcd(ll A, ll B)
+/*-----------------GCD ITERATIVE----------------*/
+ll gcd_iterative(ll A, ll B)
 {
-    return (B == 0 ? A : gcd(B, A % B));
+    if (A < B)
+        swap(A, B);
+    while (A != 0 && B != 0)
+    {
+        ll R = A % B;
+        A = B;
+        B = R;
+    }
+    return A;
+}
+
+/*-----------------GCD RECURSIVE----------------*/
+ll gcd_recursive(ll A, ll B)
+{
+    return (B == 0 ? A : gcd_recursive(B, A % B));
 }
 
 /*-----------------LCM----------------*/
 ll lcm(ll A, ll B)
 {
-    return A / gcd(A, B) * B;
+    return A / gcd_recursive(A, B) * B;
 }
 
 /*-----------------EXTENDED EUCLIDEAN ITERATIVE----------------*/
