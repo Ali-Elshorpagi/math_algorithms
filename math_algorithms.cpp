@@ -28,6 +28,11 @@ typedef set<int> si;
 /*-----------------MATH TIPS----------------*/
 // ceil(a / b) a, b must be double;
 // ceil(a / b) a, b are integers = ((a + b - 1) / b);
+// round(a / b);
+    // if (a < 0)
+    //     return (a - b / 2) / b;
+    // else
+    //     return (a + b / 2) / b;
 
 // a % b = a - (b * (floor(a / b)));
 
