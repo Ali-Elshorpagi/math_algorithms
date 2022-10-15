@@ -29,10 +29,10 @@ typedef set<int> si;
 // ceil(a / b) a, b must be double;
 // ceil(a / b) a, b are integers = ((a + b - 1) / b);
 // round(a / b);
-    // if (a < 0)
-    //     return (a - b / 2) / b;
-    // else
-    //     return (a + b / 2) / b;
+// if (a < 0)
+//     return (a - b / 2) / b;
+// else
+//     return (a + b / 2) / b;
 
 // a % b = a - (b * (floor(a / b)));
 
@@ -124,7 +124,14 @@ ull nPr(ll n, ll r)
 ll gcd_iterative(ll A, ll B)
 {
     if (A < B)
-        swap(A, B);
+    {
+        // swap between two numbers;
+        // you can use swa(A, B);
+        A ^= B;
+        B ^= A;
+        A ^= B;
+    }
+
     while (A != 0 && B != 0)
     {
         ll R = A % B;
