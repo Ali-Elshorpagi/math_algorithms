@@ -8,6 +8,7 @@ typedef unsigned long long ull;
 typedef pair<int, int> pii;
 typedef pair<ll, ll> pll;
 typedef vector<int> vi;
+typedef vector<char> vc;
 typedef vector<bool> vb;
 typedef vector<vi> vvi;
 typedef vector<ll> vll;
