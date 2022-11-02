@@ -42,12 +42,16 @@ typedef set<int> si;
 // (a - b) % c = ((a % c) - (b % c) + c) % c;
 // (a / b) % c = ((a % c) * ((b ^ -1) % c)) % c;
 
-/*-----------------SUMMATION FROM 1 TO N----------------*/
+/*-----------------SUMMATION FORMULAS----------------*/
 ll clac_sum(ll a1, ll an, ll n)
 {
-    // sum all odd from 1 to n = ((n + 1) / 2) * ((n + 1) / 2);
-    // sum all even from 1 to n -> (m = n / 2)   --> (sum = m * (m + 1));
-    // an = a1 + (n - 1) * d;
+    // sum all ODD numbers from 1 to n = ((n + 1) / 2) * ((n + 1) / 2);
+    // sum all EVEN numbers from 1 to n -> (m = n / 2)   --> (sum = m * (m + 1));
+    // sum all number from 1 to n = n * (n + 1) / 2;
+    /*-----------------------------------------------------------------------*/
+    // a1 = first number;
+    // an = last number -> an = a1 + (n - 1) * (differnce between numbers);
+    // n = how many numbers;
     return (((a1 + an) * n) >> 1);
 }
 
