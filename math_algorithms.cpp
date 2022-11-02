@@ -126,11 +126,11 @@ ll gcd_iterative(ll A, ll B)
 {
     if (A < B)
     {
-        // swap between two numbers;
-        // you can use swa(A, B);
-        A ^= B;
-        B ^= A;
-        A ^= B;
+        swap(A, B);
+        // you can use this way to swap between (A, B);
+        // A ^= B;
+        // B ^= A;
+        // A ^= B;
     }
 
     while (A != 0 && B != 0)
