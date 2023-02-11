@@ -25,6 +25,7 @@ typedef set<int> si;
 #define fr(i, x, n) for (ll i(x); i < n; ++i)
 #define fl(i, x, n) for (ll i(x); i >= n; --i)
 #define fc(it, v) for (auto &(it) : (v))
+#define sq(x) (x) * (x)
 #define MOD 1000000007
 
 /*-----------------MATH TIPS----------------*/
@@ -212,11 +213,11 @@ ll fast_power_recursive(ll b, ll p)
 {
     if (!p)
         return 1;
-    ll sq(fast_power_recursive(b, p >> 1));
-    sq *= sq;
+    ll squ(fast_power_recursive(b, p >> 1));
+    squ *= squ;
     if (p & 1)
-        sq *= b;
-    return sq;
+        squ *= b;
+    return squ;
 }
 
 /*-----------------MODULUS MULTIPLICATION----------------*/
