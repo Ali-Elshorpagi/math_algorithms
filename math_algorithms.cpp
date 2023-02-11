@@ -140,7 +140,7 @@ ll gcd_iterative(ll A, ll B)
 
     while (A != 0 && B != 0)
     {
-        ll R = A % B;
+        ll R(A % B);
         A = B;
         B = R;
     }
@@ -187,7 +187,7 @@ ll extended_euclidean_recursive(ll a, ll b, ll &x, ll &y)
         return a;
     }
     ll x1, y1;
-    ll g = extended_euclidean_recursive(a, a % b, x1, y1);
+    ll g(extended_euclidean_recursive(a, a % b, x1, y1));
     x = y1;
     y = x1 - y1 * (a / b); // a % b = a - (b * (floor(a / b)));
     return g;              // g = gcd(a, b);
@@ -302,7 +302,7 @@ void factorization(ll n)
 void prime_factorization(ll n)
 {
     vi p_factors;
-    for (ll i(2); i * i <= n; i++)
+    for (ll i(2); i * i <= n; ++i)
     {
         while (n % i == 0)
             n /= i, p_factors.emplace_back(i);
@@ -387,7 +387,7 @@ vb segmented_sieve(ll L, ll R)
 /*-----------------PRINT SEGMENTED SIEVE----------------*/
 void print_segmented_sieve(ll L, ll R)
 {
-    vb is_composite_print = segmented_sieve(L, R);
+    vb is_composite_print(segmented_sieve(L, R));
     fr(i, L, R + 1)
     {
         if (!is_composite_print[i - L])
@@ -401,6 +401,6 @@ int main()
     Mesh_Ali;
     // freopen("input.txt", "r", stdin);
     // freopen("output.txt", "w", stdout);
-
+    cout << edl << "DONE" << edl;
     return 0;
 }
