@@ -22,8 +22,8 @@ typedef set<int> si;
 #define sz(v) ((int)((v).size()))
 #define cl(v) ((v).clear())
 #define edl '\n'
-#define fr(i, x, n) for (ll i(x); i < n; ++i)
-#define fl(i, x, n) for (ll i(x); i >= n; --i)
+#define fr(i, x, n) for (int i(x); i < n; ++i)
+#define fl(i, x, n) for (int i(x); i >= n; --i)
 #define fc(it, v) for (auto &(it) : (v))
 #define sq(x) (x) * (x)
 #define MOD 1000000007
@@ -132,13 +132,11 @@ ll gcd_iterative(ll A, ll B)
 {
     if (A < B)
     {
-        swap(A, B);
-        // you can use this way to swap between (A, B);
-        // A ^= B;
-        // B ^= A;
-        // A ^= B;
+        A ^= B;
+        B ^= A;
+        A ^= B;
+        // you can use swap(A, B) but this way is more faster;
     }
-
     while (A != 0 && B != 0)
     {
         ll R(A % B);
@@ -400,8 +398,8 @@ void print_segmented_sieve(ll L, ll R)
 int main()
 {
     Mesh_Ali;
-    // freopen("input.txt", "r", stdin);
-    // freopen("output.txt", "w", stdout);
-    cout << edl << "DONE" << edl;
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+
     return 0;
 }
