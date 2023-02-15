@@ -398,8 +398,8 @@ void print_segmented_sieve(ll L, ll R)
 int main()
 {
     Mesh_Ali;
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-    return 0;
+    return (0);
 }
