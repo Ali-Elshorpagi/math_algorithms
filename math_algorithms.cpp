@@ -38,6 +38,7 @@ typedef set<int> si;
 //     return (a + b / 2) / b;
 
 // a % b = a - (b * (floor(a / b)));
+// a % b = ((a % b) + b) % b; for negative numbers
 
 // (a + b) % c = ((a % c) + (b % c)) % c;
 // (a * b) % c = ((a % c) * (b % c)) % c;
