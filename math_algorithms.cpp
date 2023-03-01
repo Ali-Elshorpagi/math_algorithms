@@ -26,6 +26,8 @@ typedef set<int> si;
 #define fl(i, x, n) for (int i(x); i >= n; --i)
 #define fc(it, v) for (auto &(it) : (v))
 #define sq(x) (x) * (x)
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
 #define MOD 1000000007
 
 /*-----------------MATH TIPS----------------*/
@@ -318,8 +320,7 @@ bool perfect_square(ll n)
     double sqrt_n(sqrt(n));
     if (sqrt_n == int(sqrt_n))
         return true;
-    else
-        return false;
+    return false;
 }
 
 /*-----------------SIEVE OF ERATOSTHENES----------------*/
