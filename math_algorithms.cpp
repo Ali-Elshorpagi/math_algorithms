@@ -23,11 +23,11 @@ typedef set<int> si;
 #define cl(v) ((v).clear())
 #define edl '\n'
 #define fr(i, x, n) for (int i(x); i < n; ++i)
-#define fl(i, x, n) for (int i(x); i >= n; --i)
+#define fl(i, x, n) for (int i(x); i > n; --i)
 #define fc(it, v) for (auto &(it) : (v))
 #define sq(x) (x) * (x)
-#define yes cout << "YES\n"
-#define no cout << "NO\n"
+#define yes printf("YES\n")
+#define no printf("NO\n")
 #define MOD 1000000007
 
 /*-----------------MATH TIPS----------------*/
@@ -48,7 +48,7 @@ typedef set<int> si;
 // (a / b) % c = ((a % c) * ((b ^ -1) % c)) % c;
 
 /*-----------------SUMMATION FORMULAS----------------*/
-ll clac_sum(ll a1, ll an, ll n)
+int clac_sum(int a1, int an, int n)
 {
     // sum all ODD numbers from 1 to n = ((n + 1) / 2) * ((n + 1) / 2);
     // sum all EVEN numbers from 1 to n -> (m = n / 2)   --> (sum = m * (m + 1));
@@ -63,12 +63,12 @@ ll clac_sum(ll a1, ll an, ll n)
 /*-----------------CUMULATIVE SUM----------------*/
 void cumulative_sum()
 {
-    ll n;
+    int n;
     cin >> n;
-    vll arr(n);
+    vi arr(n);
     fc(it, arr) cin >> it;
     fr(i, 1, n) arr[i] += arr[i - 1];
-    ll q, l, r;
+    int q, l, r;
     cin >> q;
     while (q--)
     {
@@ -82,10 +82,10 @@ void cumulative_sum()
 void ranged_sum()
 {
     // value can be any number based on the problem;
-    ll n, t;
+    int n, t;
     cin >> n >> t;
-    vll arr(n + 10); // given array of zeros of size n;
-    ll value(1), l, r;
+    vi arr(n + 10); // given array of zeros of size n;
+    int value(1), l, r;
     while (t--)
     {
         cin >> l >> r;
@@ -97,19 +97,19 @@ void ranged_sum()
 }
 
 /*-----------------FACTORIAL----------------*/
-ll factorial(ll n)
+int factorial(int n)
 {
     return ((n == 0 || n == 1) ? 1 : (n * factorial(n - 1)));
 }
 
 /*-----------------COMBINATION----------------*/
-ull nCr(ll n, ll r)
+unsigned int nCr(int n, int r)
 {
     // we can use -> nCr = factorial(n) / (factorial(r) * factorial(n - r));
     if (r > n)
         return 0;
     r = max(r, n - r); // nCr(n,r) = nCr(n,n-r)
-    ull ans(1), div(1), i(r + 1);
+    unsigned int ans(1), div(1), i(r + 1);
     while (i <= n)
     {
         ans *= i, ++i;
@@ -119,19 +119,19 @@ ull nCr(ll n, ll r)
 }
 
 /*-----------------PERMUTATION----------------*/
-ull nPr(ll n, ll r)
+unsigned int nPr(int n, int r)
 {
     // we can use -> nPr = factorial(n) / factorial(n - r);
     if (r > n)
         return 0;
-    ull p(1), i(n - r + 1);
+    unsigned int p(1), i(n - r + 1);
     while (i <= n)
         p *= i++;
     return p;
 }
 
 /*-----------------GCD ITERATIVE----------------*/
-ll gcd_iterative(ll A, ll B)
+int gcd_iterative(int A, int B)
 {
     if (A < B)
     {
@@ -142,7 +142,7 @@ ll gcd_iterative(ll A, ll B)
     }
     while (A != 0 && B != 0)
     {
-        ll R(A % B);
+        int R(A % B);
         A = B;
         B = R;
     }
@@ -150,27 +150,27 @@ ll gcd_iterative(ll A, ll B)
 }
 
 /*-----------------GCD RECURSIVE----------------*/
-ll gcd_recursive(ll A, ll B)
+int gcd_recursive(int A, int B)
 {
     return (B == 0 ? A : gcd_recursive(B, A % B));
 }
 
 /*-----------------LCM----------------*/
-ll lcm(ll A, ll B)
+int lcm(int A, int B)
 {
     return A / gcd_recursive(A, B) * B;
 }
 
 /*-----------------EXTENDED EUCLIDEAN ITERATIVE----------------*/
-ll extended_euclidean_iterative(ll a, ll b, ll &x_prev, ll &y_prev)
+int extended_euclidean_iterative(int a, int b, int &x_prev, int &y_prev)
 {
     // a*x + b*y = gcd(a, b); // Bézout's Theorem
     // This algorithm return x, y and gcd(a, b);
     x_prev = 1, y_prev = 0;
-    ll x(0), y(1);
+    int x(0), y(1);
     while (b)
     {
-        ll q(a / b);
+        int q(a / b);
         tie(x, x_prev) = make_tuple(x_prev - q * x, x);
         tie(y, y_prev) = make_tuple(y_prev - q * y, y);
         tie(a, b) = make_tuple(b, a % b);
@@ -179,7 +179,7 @@ ll extended_euclidean_iterative(ll a, ll b, ll &x_prev, ll &y_prev)
 }
 
 /*-----------------EXTENDED EUCLIDEAN RECURSIVE----------------*/
-ll extended_euclidean_recursive(ll a, ll b, ll &x, ll &y)
+int extended_euclidean_recursive(int a, int b, int &x, int &y)
 {
     // a*x + b*y = gcd(a, b); // Bézout's Theorem
     // This algorithm return x, y and gcd(a, b);
@@ -188,17 +188,17 @@ ll extended_euclidean_recursive(ll a, ll b, ll &x, ll &y)
         x = 1, y = 0;
         return a;
     }
-    ll x1, y1;
-    ll g(extended_euclidean_recursive(a, a % b, x1, y1));
+    int x1, y1;
+    int g(extended_euclidean_recursive(a, a % b, x1, y1));
     x = y1;
     y = x1 - y1 * (a / b); // a % b = a - (b * (floor(a / b)));
     return g;              // g = gcd(a, b);
 }
 
 /*-----------------FAST POWER ITERATIVE----------------*/
-ll fast_power_iterative(ll b, ll p)
+int fast_power_iterative(int b, int p)
 {
-    ll ans(1);
+    int ans(1);
     while (p)
     {
         if (p & 1)
@@ -210,11 +210,11 @@ ll fast_power_iterative(ll b, ll p)
 }
 
 /*-----------------FAST POWER RECURSIVE----------------*/
-ll fast_power_recursive(ll b, ll p)
+int fast_power_recursive(int b, int p)
 {
     if (!p)
         return 1;
-    ll squ(fast_power_recursive(b, p >> 1));
+    int squ(fast_power_recursive(b, p >> 1));
     squ *= squ;
     if (p & 1)
         squ *= b;
@@ -222,17 +222,17 @@ ll fast_power_recursive(ll b, ll p)
 }
 
 /*-----------------MODULUS MULTIPLICATION----------------*/
-ll multiplication_mod(ll a, ll b, ll c)
+int multiplication_mod(int a, int b, int c)
 {
     // (a * b) % c;
     return ((a % c) * (b % c)) % c;
 }
 
 /*-----------------MODULUS MULTIPLICATION BY ADDITION----------------*/
-ll multiplication_mod_by_addition(ll a, ll b, ll m)
+int multiplication_mod_by_addition(int a, int b, int m)
 {
     // this func convert the multiplication operation to addition operation;
-    ll res(0), y(a % m);
+    int res(0), y(a % m);
     while (b)
     {
         if (b & 1)
@@ -243,10 +243,10 @@ ll multiplication_mod_by_addition(ll a, ll b, ll m)
 }
 
 /*-----------------MODULUR EXPONENTIATION----------------*/
-ll modular_exponentiation(ll base, ll power, ll m = MOD)
+int modular_exponentiation(int base, int power, int m = MOD)
 {
     // You can change MOD to any variable that you want and add it to the function parameters;
-    ll result(1);
+    int result(1);
     while (power)
     {
         if (power & 1)
@@ -258,14 +258,14 @@ ll modular_exponentiation(ll base, ll power, ll m = MOD)
 }
 
 /*-----------------PRIME CHECKING 0----------------*/
-bool is_prime_0(ll n, ll k = 500) // Fermat Primality algorithm
+bool is_prime_0(int n, int k = 500) // Fermat Primality algorithm
 {
     if (n <= 4)
         return n == 2 || n == 3;
     fr(i, 1, k + 1)
     {
-        ll a(2 + rand() % (n - 3));
-        ll res(modular_exponentiation(a, n - 1, n));
+        int a(2 + rand() % (n - 3));
+        int res(modular_exponentiation(a, n - 1, n));
         if (res != 1)
             return false;
     }
@@ -273,11 +273,11 @@ bool is_prime_0(ll n, ll k = 500) // Fermat Primality algorithm
 }
 
 /*-----------------PRIME CHECKING 1----------------*/
-bool is_prime_1(ll n)
+bool is_prime_1(int n)
 {
     if (n <= 1)
         return false;
-    for (ll i(2); i * i <= n; ++i)
+    for (int i(2); i * i <= n; ++i)
     {
         if (n % i == 0)
             return false;
@@ -286,9 +286,9 @@ bool is_prime_1(ll n)
 }
 
 /*-----------------FACTORIZATION----------------*/
-void factorization(ll n)
+void factorization(int n)
 {
-    for (ll i(1); i * i <= n; ++i)
+    for (int i(1); i * i <= n; ++i)
     {
         if (n % i == 0)
         {
@@ -301,10 +301,10 @@ void factorization(ll n)
 }
 
 /*-----------------PRIME FACTORIZATION----------------*/
-void prime_factorization(ll n)
+void prime_factorization(int n)
 {
     vi p_factors;
-    for (ll i(2); i * i <= n; ++i)
+    for (int i(2); i * i <= n; ++i)
     {
         while (n % i == 0)
             n /= i, p_factors.emplace_back(i);
@@ -315,7 +315,7 @@ void prime_factorization(ll n)
 }
 
 /*-----------------CHECK PERFECT SQUARE----------------*/
-bool perfect_square(ll n)
+bool perfect_square(int n)
 {
     double sqrt_n(sqrt(n));
     if (sqrt_n == int(sqrt_n))
@@ -324,17 +324,17 @@ bool perfect_square(ll n)
 }
 
 /*-----------------SIEVE OF ERATOSTHENES----------------*/
-const ll sze(1e6 + 10);
+const int sze(1e6 + 10);
 void sieve()
 {
     bool composite[sze + 1];
-    vll prime(sze);
+    vi prime(sze);
     composite[0] = composite[1] = 1;
-    for (ll i(2); i * i <= sze; ++i)
+    for (int i(2); i * i <= sze; ++i)
     {
         if (!composite[i])
         {
-            for (ll j(i * i); j <= sze; j += i)
+            for (int j(i * i); j <= sze; j += i)
                 composite[j] = 1;
         }
     }
@@ -344,13 +344,13 @@ void sieve()
 void linear_sieve()
 {
     bool composite[sze + 1];
-    vll prime(sze);
+    vi prime(sze);
     composite[0] = composite[1] = 1;
     fr(i, 2, sze + 1)
     {
         if (!composite[i])
             prime.push_back(i);
-        for (ll j(0); j < sz(prime) && i * prime[j] <= sze; ++j)
+        for (int j(0); j < sz(prime) && i * prime[j] <= sze; ++j)
         {
             composite[i * prime[j]] = 1;
             if (i % prime[j] == 0)
@@ -360,24 +360,24 @@ void linear_sieve()
 }
 
 /*-----------------SEGMENTED SIEVE----------------*/
-vb segmented_sieve(ll L, ll R)
+vb segmented_sieve(int L, int R)
 {
-    ll lim(sqrt(R));
+    int lim(sqrt(R));
     vb mark(lim + 1, false);
-    vll primes;
+    vi primes;
     fr(i, 2, lim + 1)
     {
         if (!mark[i])
         {
             primes.emplace_back(i);
-            for (ll j(i * i); j <= lim; j += i)
+            for (int j(i * i); j <= lim; j += i)
                 mark[j] = true;
         }
     }
     vb is_composite(R - L + 1, false);
     fc(it, primes)
     {
-        for (ll i(max(it * it, (L + it - 1) / it * it)); i <= R; i += it)
+        for (int i(max(it * it, (L + it - 1) / it * it)); i <= R; i += it)
             is_composite[i - L] = true;
     }
     if (L == 1)
@@ -386,7 +386,7 @@ vb segmented_sieve(ll L, ll R)
 }
 
 /*-----------------PRINT SEGMENTED SIEVE----------------*/
-void print_segmented_sieve(ll L, ll R)
+void print_segmented_sieve(int L, int R)
 {
     vb is_composite_print(segmented_sieve(L, R));
     fr(i, L, R + 1)
