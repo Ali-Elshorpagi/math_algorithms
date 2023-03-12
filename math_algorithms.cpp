@@ -26,8 +26,8 @@ typedef set<int> si;
 #define fl(i, x, n) for (int i(x); i > n; --i)
 #define fc(it, v) for (auto &(it) : (v))
 #define sq(x) (x) * (x)
-#define yes printf("YES\n")
-#define no printf("NO\n")
+#define yes cout << "YES\n"
+#define no cout << "NO\n"
 #define MOD 1000000007
 
 /*-----------------MATH TIPS----------------*/
@@ -78,8 +78,8 @@ void cumulative_sum()
     }
 }
 
-/*-----------------RANGED SUM----------------*/
-void ranged_sum()
+/*-----------------UPDATE RANGE----------------*/
+void update_range()
 {
     // value can be any number based on the problem;
     int n, t;
@@ -99,7 +99,7 @@ void ranged_sum()
 /*-----------------FACTORIAL----------------*/
 int factorial(int n)
 {
-    return ((n == 0 || n == 1) ? 1 : (n * factorial(n - 1)));
+    return ((!n || n == 1) ? 1 : (n * factorial(n - 1)));
 }
 
 /*-----------------COMBINATION----------------*/
@@ -140,7 +140,7 @@ int gcd_iterative(int A, int B)
         A ^= B;
         // you can use swap(A, B) but this way is more faster;
     }
-    while (A != 0 && B != 0)
+    while (A && B)
     {
         int R(A % B);
         A = B;
@@ -152,7 +152,7 @@ int gcd_iterative(int A, int B)
 /*-----------------GCD RECURSIVE----------------*/
 int gcd_recursive(int A, int B)
 {
-    return (B == 0 ? A : gcd_recursive(B, A % B));
+    return (!B ? A : gcd_recursive(B, A % B));
 }
 
 /*-----------------LCM----------------*/
@@ -260,7 +260,7 @@ int modular_exponentiation(int base, int power, int m = MOD)
 /*-----------------PRIME CHECKING 0----------------*/
 bool is_prime_0(int n, int k = 500) // Fermat Primality algorithm
 {
-    if (n <= 4)
+    if (n < 5)
         return n == 2 || n == 3;
     fr(i, 1, k + 1)
     {
