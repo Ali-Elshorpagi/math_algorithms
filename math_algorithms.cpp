@@ -1,4 +1,5 @@
-#include <bits/stdc++.h>
+// #include <bits/stdc++.h>
+#include "Elshorpagi.h"
 
 using namespace std;
 
@@ -397,12 +398,25 @@ void print_segmented_sieve(int L, int R)
     cout << edl;
 }
 
+class Math_Algorithms
+{
+public:
+    Math_Algorithms() { Mesh_Ali; }
+    void TEST()
+    {
+        // test the MAs here;
+    }
+};
+
 int main()
 {
-    Mesh_Ali;
+    Math_Algorithms MA;
     // freopen("test/input.txt", "r", stdin);
-    // freopen("test/output.txt", "w", stdout);
-
+    freopen("test/output.txt", "w", stdout);
+    int tc(1);
+    // cin >> tc;
+    while (tc--)
+        cout << "Case #" << tc + 1 << edl, MA.TEST();
     cout << edl << "DONE" << edl;
     return (0);
 }
