@@ -18,7 +18,7 @@ typedef vector<pii> vpii;
 typedef set<int> si;
 
 #define _CRT_SECURE_NO_DEPRECATE
-#define Mesh_Ali (ios_base::sync_with_stdio(false), cin.tie(NULL))
+#define Sukuna (ios_base::sync_with_stdio(false), cin.tie(NULL))
 #define all(v) ((v).begin()), ((v).end())
 #define sz(v) ((int)((v).size()))
 #define cl(v) ((v).clear())
@@ -401,7 +401,7 @@ void print_segmented_sieve(int L, int R)
 class Math_Algorithms
 {
 public:
-    Math_Algorithms() { Mesh_Ali; }
+    Math_Algorithms() { Sukuna; }
     void TEST()
     {
         // test the MAs here;
