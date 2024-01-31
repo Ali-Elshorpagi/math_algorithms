@@ -371,7 +371,7 @@ void print_segmented_sieve(int L, int R)
 class Math_Algorithms
 {
 public:
-    Math_Algorithms() { Sukuna; }
+    Math_Algorithms() { __elshorpagi__; }
     ~Math_Algorithms() { cout << edl << "DONE" << edl; }
     void TEST()
     {
